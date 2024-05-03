@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>motivation-cotes</title>
+</head>
+<style>
+    body {
+        background-color: rgb(221, 108, 28);
+    }
+
+    h1 {
+        padding-top: 12%;
+        color: #fff;
+    }
+
+    h2 {
+        transform: translate(-50%, -50%);
+        position: absolute;
+        top: 55%;
+        left: 50%;
+        color: black;
+    }
+</style>
+
+<body>
+    <div class="motivation-cotes">
+        <marquee>
+            <h1>Motivational Quotes:</h1>
+        </marquee>
+
+        <h2>Success usually comes to those who are too busy to be looking for it. —Henry David Thoreau</h2>
+    </div>
+</body>
+<script>
+    let h2 = document.querySelector("h2");
+    let arr = ["Success is not final; failure is not fatal: It is the courage to continue that counts. —Winston Churchill", "There is nothing impossible to they who will try — Alexander the Great", "Keep your face always toward the sunshine, and shadows will fall behind you.— Walt Whitman"];
+    let currentindex = 0;
+    setInterval(() => {
+        currentindex = (currentindex + 1) % arr.length;
+        h2.innerText = arr[currentindex];
+    }, 2000)
+    document.querySelector("marquee").append(document.querySelector("h1"));
+</script>
+
+</html>
