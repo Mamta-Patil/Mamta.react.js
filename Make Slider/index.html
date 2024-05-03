@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Slider</title>
 </head>
 
 <body>
@@ -16,10 +16,10 @@
     <script>
         let image = document.querySelector("img");
         let imagearr = ["https://cdn.pixabay.com/photo/2017/02/08/17/24/fantasy-2049567_1280.jpg", "https://cdn.pixabay.com/photo/2024/03/06/09/32/liverworts-8616125_1280.jpg", "https://cdn.pixabay.com/photo/2016/01/08/11/57/butterflies-1127666_1280.jpg"]
-        let current = 0;
+        let currentindex = 0;
         setInterval(() => {
-            current = (current + 1) % imagearr.length;
-            image.src = imagearr[current];
+            currentindex = (currentindex + 1) % imagearr.length;
+            image.src = imagearr[currentindex];
 
         }, 2000)
     </script>
