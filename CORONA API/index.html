@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corona API</title>
+</head>
+<body>
+    <div class="container" style="display: grid; grid-template-columns: repeat(2,1fr);">
+    </div>
+</body>
+<script>
+function fatchdata()
+{
+    fetch("https://api.rootnet.in/covid19-in/stats/latest")   
+    .then((res)=>res.json())  
+    .then((data)=>datalist(data.data.regional))
+    .catch((err)=>console.log(err))
+}
+fatchdata()
+
+function datalist(data)
+{
+    let store=data.map((el)=>
+    singledata(el.loc,el.confirmedCasesIndian,el.confirmedCasesForeign,el.discharged,el.deaths,el.totalConfirmed)
+)
+document.querySelector(".container").innerHTML=store.join("");
+}
+
+function singledata(loc,confirmedCasesIndian,confirmedCasesForeign,discharged,deaths,totalConfirmed)
+{
+    let data=`
+    <div style="border:2px solid #fff;background-color:black">
+    <h2 style="text-align:center; color:#fff; padding-left:20px">Location : ${loc}</h2>
+    <h3 style="padding-left:20px; color:#fff">confirmedCasesIndian : ${confirmedCasesIndian}</h3>
+    <h3 style="padding-left:20px; color:#fff">confirmedCasesForeign : ${confirmedCasesForeign}</h3>
+    <h3 style="padding-left:20px; color:#fff">discharged : ${discharged}</h3>
+    <h3 style="padding-left:20px; color:#fff">deaths : ${deaths}</h3>
+    <h3 style="padding-left:20px; color:#fff">totalConfirmed : ${totalConfirmed}</h3>
+    </div>
+    `
+    return data;
+}
+</script>
+</html> 
